@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/popup_background">
+    <item
+        android:title="Go to user profile"
+        android:id="@+id/menu_home_picture_user_profile">
+    </item>
+
+    <item android:title="Settings" android:id="@+id/menu_home_picture_user_settings"/>
+</menu>

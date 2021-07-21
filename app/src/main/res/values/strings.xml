@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Epitech Intra</string>
+    <string name="generated_link_welcome_text">Copy the autologin link</string>
+    <string name="intra_autologin_link" translatable="false">https://intra.epitech.eu/admin/autolog</string>
+    <string name="generated_link_field_hint" translatable="false">https://intra.epitech.eu/auth-341cd</string>
+    <string name="generated_link_button">Validate link</string>
+    <string name="user_activity_title">User</string>
+    <string name="calendar">Calendar</string>
+    <string name="home">Home</string>
+    <string name="language">Language</string>
+    <string name="change_default_language">Change default language</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="see_marks">See marks</string>
+    <string name="mark_semester">Semester</string>
+    <string name="congratulations">Congratulations !</string>
+</resources>

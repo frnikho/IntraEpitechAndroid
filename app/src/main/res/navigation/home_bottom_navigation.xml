@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_bottom_navigation"
+    app:startDestination="@id/homeCalendarFragment">
+
+    <fragment
+        android:id="@+id/homeCalendarFragment"
+        android:name="fr.nikho.epitech.intra.fragments.HomeCalendarFragment"
+        android:label="fragment_home_calendar"
+        tools:layout="@layout/fragment_home_calendar" />
+    <fragment
+        android:id="@+id/homeDashboardFragment"
+        android:name="fr.nikho.epitech.intra.fragments.HomeDashboardFragment"
+        android:label="fragment_home_dashboard"
+        tools:layout="@layout/fragment_home_dashboard" />
+    <fragment
+        android:id="@+id/homeModuleFragment"
+        android:name="fr.nikho.epitech.intra.fragments.HomeModuleFragment"
+        android:label="fragment_home_module"
+        tools:layout="@layout/fragment_home_module" />
+</navigation>

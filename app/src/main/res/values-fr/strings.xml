@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Intra Epitech</string>
+    <string name="generated_link_welcome_text">Copier le lien d\'auto login</string>
+    <string name="generated_link_button">Valider</string>
+    <string name="user_activity_title">Utilisateur</string>
+    <string name="calendar">Calendrier</string>
+    <string name="home">Accueil</string>
+    <string name="language">Langue</string>
+    <string name="change_default_language">Changer la langue par defaut</string>
+    <string name="disconnect">Déconnexion</string>
+    <string name="see_marks">Voir les notes</string>
+    <string name="congratulations">Felicitations !</string>
+</resources>

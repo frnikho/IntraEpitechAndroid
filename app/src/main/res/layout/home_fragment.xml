@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/home_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                    <info.androidhive.fontawesome.FontTextView
+                        android:id="@+id/home_more_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:text="@string/fa_ellipsis_h_solid"
+                        android:textColor="@color/home_icon_grey"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:solid_icon="true" />
+
+                    <info.androidhive.fontawesome.FontTextView
+                        android:id="@+id/home_notification_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:text="@string/fa_bell"
+                        android:textColor="@color/home_icon_grey"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/home_more_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:solid_icon="true" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/home_user_icon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/home_notification_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Dashboard"
+                        android:textColor="@color/black"
+                        android:textSize="34sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/TransparentScroll"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:fillViewport="true">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                            <GridLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:columnCount="3"
+                                android:orientation="horizontal">
+
+                                    <androidx.cardview.widget.CardView
+                                        style="@style/HomeBox"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_columnWeight="1">
+
+                                            <TextView
+                                                android:id="@+id/home_minimum_credits"
+                                                style="@style/HomeBoxNumber"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content" />
+
+                                            <TextView
+                                                style="@style/HomeBoxTitle"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:text="credits" />
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/home_user_gpa_card"
+                                        style="@style/HomeBox"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_columnWeight="1">
+
+                                            <TextView
+                                                android:id="@+id/home_user_gpa"
+                                                style="@style/HomeBoxNumber"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content" />
+
+                                            <TextView
+                                                style="@style/HomeBoxTitle"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:text="GPA" />
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/home_user_credits_card"
+                                        style="@style/HomeBox"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_columnWeight="1">
+
+                                            <TextView
+                                                android:id="@+id/home_user_credits"
+                                                style="@style/HomeBoxNumber"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content" />
+
+                                            <TextView
+                                                style="@style/HomeBoxTitle"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:text="credits">
+
+                                            </TextView>
+                                    </androidx.cardview.widget.CardView>
+
+                            </GridLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                app:cardBackgroundColor="@color/black">
+
+                            </androidx.cardview.widget.CardView>
+
+<!--                            <TextView
+                                android:id="@+id/home_modules_title"
+                                style="@style/HomeSubtitleText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="Modules">
+
+                            </TextView>-->
+
+                            <LinearLayout
+                                android:id="@+id/home_modules_ll"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:listSelector="@android:color/transparent"
+                                android:orientation="vertical" />
+
+<!--                            <TextView
+                                android:id="@+id/home_activities_title"
+                                style="@style/HomeSubtitleText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="Activities">
+                                </TextView>
+-->
+
+
+                            <LinearLayout
+                                android:id="@+id/home_activities_ll"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:listSelector="@android:color/transparent"
+                                android:orientation="vertical" />
+
+     <!--                       <TextView
+                                android:id="@+id/home_project_title"
+                                style="@style/HomeSubtitleText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="Projects">
+                            </TextView>-->
+
+                            <LinearLayout
+                                android:id="@+id/home_project_ll"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/HomeSubtitleText"
+                                android:padding="4dp"
+                                android:text="Marks"
+                                android:id="@+id/home_marks_title" />
+
+                            <LinearLayout
+                                android:id="@+id/home_marks_ll"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/HomeSubtitleText"
+                                android:padding="4dp"
+                                android:text="Susie"
+                                android:id="@+id/home_susie_title" />
+
+                            <LinearLayout
+                                android:id="@+id/home_susie_ll"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+            </ScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_fragment_loading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/home_fragment_loadingview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </com.airbnb.lottie.LottieAnimationView>
+        </LinearLayout>
+</FrameLayout>
