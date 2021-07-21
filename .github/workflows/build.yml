@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - devops
       - dev/*
     paths-ignore:
       - '**.md'
@@ -21,12 +22,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - uses: actions/cache@v2
-          with:
-            path: |
-              ~/.gradle/caches
-              ~/.gradle/wrapper
-            key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.java') }}
       - name: Build the app
         run: ./gradlew assembleDebug
 
