@@ -7,8 +7,6 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import android.provider.CalendarContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +30,10 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import fr.nikho.epitech.intra.R;
 import fr.nikho.epitech.intra.activities.MarksActivity;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Netlog;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.services.ClientService;
@@ -45,12 +42,9 @@ import fr.nikho.epitech.intra.utils.NetlogUtils;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Response;
-import retrofit2.http.Streaming;
 
 public class UserFragment extends Fragment {
 
@@ -100,19 +94,23 @@ public class UserFragment extends Fragment {
 
         userLinearLayout = view.findViewById(R.id.user_fragment_info_cardview_ll);
         marksButton = view.findViewById(R.id.user_fragment_marks_button);
-        namesText = view.findViewById(R.id.user_fragment_namestext);
+
+        namesText = view.findViewById(R.id.user_fragment_user_names);
         studentYearText = view.findViewById(R.id.user_fragment_studentyear);
+
         netlogChart = view.findViewById(R.id.user_fragment_netlog_anychart);
         netlogPieChart = view.findViewById(R.id.user_fragment_netlog_chart);
 
         ghostText = view.findViewById(R.id.user_fragment_ghost_text);
         rescueText = view.findViewById(R.id.user_fragment_rescue_text);
-        encouragmentText = view.findViewById(R.id.user_fragment_encouragment_text);
+        encouragmentText = view.findViewById(R.id.user_fragment_encouragement_text);
         medalText = view.findViewById(R.id.user_fragment_medal_text);
 
         String names = user.getFirstname() + " " + user.getLastname();
         namesText.setText(names);
-        studentYearText.setText(String.valueOf(user.getStudentYear()));
+
+        String studentYearTextContent = getString(R.string.scolar_year).replaceAll(":nb", String.valueOf(user.getStudentYear()));
+        studentYearText.setText(studentYearTextContent);
 
         marksButton.setOnClickListener(this::onClickMarksButton);
 
@@ -148,10 +146,15 @@ public class UserFragment extends Fragment {
                         int remarkable = flags.getFlags().getRemarkable().getNb();
                         int medal = flags.getFlags().getMedal().getNb();
 
-                        ghostText.setText(String.valueOf(ghost));
-                        rescueText.setText(String.valueOf(difficulty));
-                        encouragmentText.setText(String.valueOf(remarkable));
-                        medalText.setText(String.valueOf(medal));
+                        String ghostTextContent = getString(R.string.user_ghost_suffix).replace(":nb", String.valueOf(ghost));
+                        String rescueTextContent = getString(R.string.user_rescue_suffix).replace(":nb", String.valueOf(ghost));
+                        String encouragementTextContent = getString(R.string.user_encouragment_suffix).replace(":nb", String.valueOf(remarkable));
+                        String medalTextContent = getString(R.string.user_medal_suffix).replace(":nb", String.valueOf(medal));
+
+                        ghostText.setText(ghostTextContent);
+                        rescueText.setText(rescueTextContent);
+                        encouragmentText.setText(encouragementTextContent);
+                        medalText.setText(medalTextContent);
                     }
 
                     @Override
@@ -241,7 +244,7 @@ public class UserFragment extends Fragment {
     }
 
     private ConstraintLayout getUserInfoView(LayoutInflater inflater, User.UserInfoFields info, int icon) {
-        ConstraintLayout layout = (ConstraintLayout) inflater.inflate(R.layout.user_info_item, userLinearLayout, false);
+        ConstraintLayout layout = (ConstraintLayout) inflater.inflate(R.layout.item_user_info, userLinearLayout, false);
 
         TextView infoText = layout.findViewById(R.id.user_info_item_text);
         ImageView infoIcon = layout.findViewById(R.id.user_info_item_image);

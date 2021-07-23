@@ -310,7 +310,7 @@ public class User implements Serializable {
     @SerializedName("semester_code")
     private String semesterCode;
 
-    @SerializedName("studentYear")
+    @SerializedName("studentyear")
     private int studentYear;
 
     @SerializedName("credits")

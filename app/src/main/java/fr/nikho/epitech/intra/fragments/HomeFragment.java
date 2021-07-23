@@ -1,6 +1,5 @@
 package fr.nikho.epitech.intra.fragments;
 
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -15,16 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
@@ -33,7 +28,7 @@ import fr.nikho.epitech.intra.activities.HubActivity;
 import fr.nikho.epitech.intra.activities.ModuleActivity;
 import fr.nikho.epitech.intra.activities.NotificationActivity;
 import fr.nikho.epitech.intra.activities.WelcomeActivity;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Dashboard;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.dialogs.GpaDialog;
@@ -62,7 +57,7 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         loadingAnimationView = view.findViewById(R.id.home_fragment_loadingview);
         loadingAnimationView.setAnimation(R.raw.loading_animation);
@@ -84,6 +79,8 @@ public class HomeFragment extends Fragment {
 
 
     private void initHomeScreen() {
+        if (getView() == null)
+            return;
         _root = (ViewGroup) getView().findViewById(R.id.home_root);
 
         notifIcon = getView().findViewById(R.id.home_notification_icon);
@@ -198,7 +195,7 @@ public class HomeFragment extends Fragment {
 
     public LinearLayout getProjectItem(Dashboard.Board.Project project) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.home_project_item, projectLayout, false);
+        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.item_home_project, projectLayout, false);
         TextView title = row.findViewById(R.id.project_title);
 
         TextView start = row.findViewById(R.id.project_timeline_start);
@@ -215,7 +212,7 @@ public class HomeFragment extends Fragment {
 
     public LinearLayout getActivityItem(Dashboard.Board.Activity activity) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.home_activity_item, activitiesLayout, false);
+        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.item_home_activity, activitiesLayout, false);
         TextView title = row.findViewById(R.id.activity_name);
         TextView start = row.findViewById(R.id.activity_start_date);
         TextView end = row.findViewById(R.id.activity_end_date);
@@ -237,7 +234,7 @@ public class HomeFragment extends Fragment {
 
     public LinearLayout getModuleLayout(Dashboard.Board.Module module) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.home_activity_item, activitiesLayout, false);
+        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.item_home_activity, activitiesLayout, false);
         TextView title = row.findViewById(R.id.module_name);
         TextView start = row.findViewById(R.id.module_start_date);
         TextView end = row.findViewById(R.id.module_end_date);
@@ -255,7 +252,7 @@ public class HomeFragment extends Fragment {
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
 
-        ConstraintLayout layout = (ConstraintLayout) inflater.inflate(R.layout.dashboard_item, parent, false);
+        ConstraintLayout layout = (ConstraintLayout) inflater.inflate(R.layout.item_home_dashboard, parent, false);
 
         LottieAnimationView view = layout.findViewById(R.id.dashboard_item_lottieanimationview);
         TextView title = layout.findViewById(R.id.dashboard_item_title);

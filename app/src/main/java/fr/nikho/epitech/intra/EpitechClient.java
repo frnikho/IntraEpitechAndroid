@@ -1,4 +1,4 @@
-package fr.nikho.epitech.intra.controllers;
+package fr.nikho.epitech.intra;
 
 import fr.nikho.epitech.intra.data.Activity;
 import fr.nikho.epitech.intra.data.Dashboard;

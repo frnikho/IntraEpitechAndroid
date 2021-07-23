@@ -3,7 +3,7 @@ package fr.nikho.epitech.intra.services;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import fr.nikho.epitech.intra.AvailableLanguage;
+import fr.nikho.epitech.intra.data.AvailableLanguage;
 
 public class LanguageService {
 

@@ -9,7 +9,7 @@ import androidx.work.WorkerParameters;
 import org.jetbrains.annotations.NotNull;
 
 
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Notification;
 import fr.nikho.epitech.intra.services.ClientService;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;

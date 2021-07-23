@@ -6,13 +6,12 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Notification;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.services.ClientService;

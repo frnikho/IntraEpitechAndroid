@@ -3,20 +3,16 @@ package fr.nikho.epitech.intra.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Locale;
 
-import fr.nikho.epitech.intra.AvailableLanguage;
+import fr.nikho.epitech.intra.data.AvailableLanguage;
 import fr.nikho.epitech.intra.R;
 import fr.nikho.epitech.intra.services.LanguageService;
 import info.androidhive.fontawesome.FontTextView;

@@ -2,8 +2,6 @@ package fr.nikho.epitech.intra.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +9,6 @@ import android.widget.PopupMenu;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -39,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.Theme_IntraEpitechAndroid_DIP);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.activity_home);
         init();
 
         Intent intent = getIntent();

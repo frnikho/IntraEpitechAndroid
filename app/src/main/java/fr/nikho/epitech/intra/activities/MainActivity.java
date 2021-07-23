@@ -2,40 +2,23 @@ package fr.nikho.epitech.intra.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
-import androidx.work.WorkRequest;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
 import fr.nikho.epitech.intra.R;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.services.ClientService;
 import fr.nikho.epitech.intra.services.UserService;
-import fr.nikho.epitech.intra.services.background.MessageService;
-import fr.nikho.epitech.intra.workers.NotificationWorker;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 

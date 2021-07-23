@@ -13,4 +13,10 @@
     <string name="see_marks">See marks</string>
     <string name="mark_semester">Semester</string>
     <string name="congratulations">Congratulations !</string>
+    <string name="scolar_year">:nb year</string>
+    <string name="user_ghost_suffix">:nb absence(s)</string>
+    <string name="user_rescue_suffix">failed :nb unit(s)</string>
+    <string name="user_medal_suffix">:nb medal(s)</string>
+    <string name="user_encouragment_suffix">:nb encouragement(s)</string>
+    <string name="you_got_nb_credit_s">You got :nb credit(s) !</string>
 </resources>

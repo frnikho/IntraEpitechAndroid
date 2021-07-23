@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import java.util.concurrent.TimeUnit;
 
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.utils.AddCookiesInterceptor;
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import okhttp3.OkHttpClient;

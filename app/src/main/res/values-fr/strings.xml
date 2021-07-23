@@ -11,4 +11,10 @@
     <string name="disconnect">Déconnexion</string>
     <string name="see_marks">Voir les notes</string>
     <string name="congratulations">Felicitations !</string>
+    <string name="scolar_year">:nb année</string>
+    <string name="user_ghost_suffix">:nb absence(s)</string>
+    <string name="user_rescue_suffix">:nb module en echec</string>
+    <string name="user_medal_suffix">:nb medal(s)</string>
+    <string name="user_encouragment_suffix">:nb encouragement(s)</string>
+    <string name="you_got_nb_credit_s">Vous avez eu :nb credit(s) !</string>
 </resources>

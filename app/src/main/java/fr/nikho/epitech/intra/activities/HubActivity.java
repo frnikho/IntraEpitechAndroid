@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 
 import fr.nikho.epitech.intra.R;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Module;
 import fr.nikho.epitech.intra.services.ClientService;
 import fr.nikho.epitech.intra.utils.HubUtils;

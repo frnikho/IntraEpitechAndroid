@@ -22,16 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.nikho.epitech.intra.R;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Netlog;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.services.ClientService;
 import fr.nikho.epitech.intra.services.UserService;
-import fr.nikho.epitech.intra.utils.NetlogUtils;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 

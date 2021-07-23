@@ -3,7 +3,6 @@ package fr.nikho.epitech.intra.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +18,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import fr.nikho.epitech.intra.R;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Marks;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.services.ClientService;
@@ -177,7 +174,7 @@ public class MarksActivity extends AppCompatActivity {
     private View getMarkView(Marks.Mark mark, ViewGroup layout) {
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
 
-        ConstraintLayout cl = (ConstraintLayout) inflater.inflate(R.layout.mark_dialog_item, layout, false);
+        ConstraintLayout cl = (ConstraintLayout) inflater.inflate(R.layout.item_dialog_mark, layout, false);
         TextView markText = cl.findViewById(R.id.mark_dialog_item_note);
 
         if (mark != null)
@@ -198,7 +195,7 @@ public class MarksActivity extends AppCompatActivity {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
 
         if (marks.size() == 0) {
-            dialog.setContentView(R.layout.no_marks_dialog);
+            dialog.setContentView(R.layout.dialog_no_mark);
             LottieAnimationView anim = dialog.findViewById(R.id.no_marks_animation);
             anim.setAnimation(lottieAnimationsNoMark.get(new Random().nextInt(lottieAnimationsNoMark.size())));
             anim.setRepeatCount(LottieDrawable.INFINITE);

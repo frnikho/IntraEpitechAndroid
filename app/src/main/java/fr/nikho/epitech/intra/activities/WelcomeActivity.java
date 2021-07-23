@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 import fr.nikho.epitech.intra.R;
 import fr.nikho.epitech.intra.data.User;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.services.ClientService;
 import fr.nikho.epitech.intra.services.UserService;
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
@@ -46,7 +46,7 @@ public class WelcomeActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_activity);
+        setContentView(R.layout.activity_welcome);
         prefs = getSharedPreferences("global", Context.MODE_PRIVATE);
         Link = findViewById(R.id.intra_link);
         LinkField = findViewById(R.id.generated_link_field);

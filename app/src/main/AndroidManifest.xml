@@ -22,16 +22,10 @@
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.NotificationActivity" />
         <activity
-            android:name=".activities.NewHomeActivity"
-            android:exported="true" />
-        <activity
             android:name=".activities.DIPActivity"
             android:exported="true" />
         <activity
             android:name=".activities.HubActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activities.BinomesActivity"
             android:exported="true" />
         <activity
             android:name=".activities.MainActivity"

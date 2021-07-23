@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.Typeface;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
@@ -21,17 +18,20 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import fr.nikho.epitech.intra.R;
-import fr.nikho.epitech.intra.controllers.EpitechClient;
+import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Notification;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.services.ClientService;
-import fr.nikho.epitech.intra.services.LoadImage;
 import fr.nikho.epitech.intra.services.NotificationService;
 import fr.nikho.epitech.intra.services.UserService;
+import fr.nikho.epitech.intra.utils.DateManager;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
@@ -46,7 +46,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.Theme_IntraEpitechAndroid_SecondaryTheme);
+        setTheme(R.style.Theme_IntraEpitechAndroid_DIP);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         init();
@@ -117,7 +117,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     private void showBottomSheetDialog(Notification notification, TextView itemTitle) {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.setContentView(R.layout.notification_bottom_sheet_dialog_layout);
+        dialog.setContentView(R.layout.dialog_notification_bottom_sheet_layout);
 
         CircleImageView circleImageView = dialog.findViewById(R.id.notification_bottom_sheet_dialog_picture);
         TextView title = dialog.findViewById(R.id.notification_bottom_sheet_dialog_title);
@@ -130,9 +130,7 @@ public class NotificationActivity extends AppCompatActivity {
         title.setText(removeHTMLContent(notification.getTitle()));
         content.setText(removeHTMLContent(notification.getContent()));
 
-        dialog.setOnDismissListener(v -> {
-            itemTitle.setTypeface(Typeface.DEFAULT);
-        });
+        dialog.setOnDismissListener(v -> itemTitle.setTypeface(Typeface.DEFAULT));
 
         dialog.show();
     }
@@ -150,7 +148,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     private View getNotificationItem(Notification notification) {
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        ConstraintLayout row = (ConstraintLayout) inflater.inflate(R.layout.notification_item, notificationLayout, false);
+        ConstraintLayout row = (ConstraintLayout) inflater.inflate(R.layout.item_notification, notificationLayout, false);
 
         TextView title = row.findViewById(R.id.notification_item_title);
         TextView date = row.findViewById(R.id.notification_item_date);
@@ -166,7 +164,37 @@ public class NotificationActivity extends AppCompatActivity {
         if (!alreadySeen(Integer.parseInt(notification.getId()))) {
             title.setTypeface(Typeface.DEFAULT_BOLD);
         }
+
         date.setText(notification.getDate());
+
+        Calendar notifDate = new DateManager().getDateFromNotificationData(notification.getDate());
+        Calendar now = new DateManager().getNow();
+        long diff = notifDate.getTime().getTime() - now.getTime().getTime();
+        Calendar diffCalendar = Calendar.getInstance();
+        diffCalendar.setTime(new Date(diff));
+
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(diff);
+
+        if (seconds <= -0)
+            seconds *= -1;
+
+        if (seconds > 60) {
+            // MINUTES
+            if ((seconds / 60) > 60) {
+                // HOURS
+                if ((seconds / 60 / 60) > 24) {
+                    //DAYS
+                } else {
+                    date.setText((seconds / 60 / 60) + " h");
+                }
+
+            } else {
+                date.setText((seconds / 60) + " m");
+            }
+        } else {
+            date.setText(seconds + " s");
+        }
+
         String imageLink = ClientService.getLoginLink(this);
         imageLink = imageLink.substring(0, imageLink.length() - 1) + notification.getUser().getPicture();
         Glide.with(this).load(imageLink).into(picture);

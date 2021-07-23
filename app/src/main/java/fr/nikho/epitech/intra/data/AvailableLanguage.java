@@ -1,6 +1,6 @@
-package fr.nikho.epitech.intra;
+package fr.nikho.epitech.intra.data;
 
-import java.util.Arrays;
+import fr.nikho.epitech.intra.R;
 
 public enum AvailableLanguage {
 
