@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.github.vipulasri.timelineview.TimelineView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import fr.nikho.epitech.intra.R;
 import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Module;
+import fr.nikho.epitech.intra.data.Notification;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.services.ClientService;
 import fr.nikho.epitech.intra.services.UserService;
@@ -40,7 +45,7 @@ public class ModuleActivity extends AppCompatActivity {
     private RoundRectView userGradeCard;
     private TextView titleText, userGradeText, userCreditText, descriptionText, competenceText;
     private TextView beginDateText, endRegisterDateText, endDateText;
-    private LinearLayout responsableLayout, templateResponsableLayout;
+    private ConstraintLayout descriptionCL, userGradeCL;
 
     private User user;
     private EpitechClient client;
@@ -73,11 +78,31 @@ public class ModuleActivity extends AppCompatActivity {
         endRegisterDateText = findViewById(R.id.module_end_register_date);
         endDateText = findViewById(R.id.module_end_date);
 
-/*        descriptionText = findViewById(R.id.module_description);
-        competenceText = findViewById(R.id.module_competence);
-        responsableLayout = findViewById(R.id.module_responsable_layout);
-        templateResponsableLayout = findViewById(R.id.module_template_responsable_layout);*/
+        descriptionCL = findViewById(R.id.module_description_cl);
+        userGradeCL = findViewById(R.id.module_usergrade_cl);
         userCreditText = findViewById(R.id.module_user_credits);
+
+    }
+
+    private void onClickDescriptionView(View view) {
+
+    }
+
+    private void onClickUserGradeView(View view) {
+
+    }
+
+    private void showBottomSheetDialog(Module module) {
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        dialog.setContentView(R.layout.dialog_module_description);
+
+        TextView desc = dialog.findViewById(R.id.dialog_module_description_text);
+        TextView compet = dialog.findViewById(R.id.dialog_module_description_competence_text);
+
+        desc.setText(module.getDescription());
+        compet.setText(module.getCompetence());
+
+        dialog.show();
     }
 
     private void init(String[] data) {
@@ -101,10 +126,7 @@ public class ModuleActivity extends AppCompatActivity {
                     public void onNext(@NonNull Module module) {
                         titleText.setText(module.getTitle());
 
-                      /*  if (descriptionText != null)
-                            descriptionText.setText(module.getDescription());
-                        if (module.getCompetence() != null)
-                            competenceText.setText(module.getCompetence());*/
+                        descriptionCL.setOnClickListener(v -> showBottomSheetDialog(module));
 
                         if (module.getStudentRegistered() == 1) {
                             userGradeCard.setVisibility(View.VISIBLE);
@@ -124,11 +146,18 @@ public class ModuleActivity extends AppCompatActivity {
 
                         Calendar now = new DateManager().getNow();
 
-                        if (now.compareTo(begin) > 0) {
-
-                        } else {
-
-                        }
+                        if (now.compareTo(begin) > 0)
+                            beginDateText.setBackgroundColor(getColor(R.color.flatDarkGray));
+                        else
+                            beginDateText.setBackgroundColor(getColor(R.color.flatGreen));
+                        if (now.compareTo(endRegisteration) > 0)
+                            endRegisterDateText.setBackgroundColor(getColor(R.color.flatDarkGray));
+                        else
+                            endRegisterDateText.setBackgroundColor(getColor(R.color.flatGreen));
+                        if (now.compareTo(end) > 0)
+                            endDateText.setBackgroundColor(getColor(R.color.flatDarkGray));
+                        else
+                            endDateText.setBackgroundColor(getColor(R.color.flatGreen));
                         /*LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
 
                         String authUrl = ClientService.getLoginLink(getApplicationContext());

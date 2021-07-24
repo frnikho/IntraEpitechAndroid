@@ -13,4 +13,7 @@
     <color name="intra_dark_bg">#171717</color>
     <color name="home_icon_grey">#9198A5</color>
     <color name="transparentColor">@android:color/transparent</color>
+    <color name="backgroundCardview">#F9F9F9</color>
+    <color name="flatDarkGray">#716F81</color>
+    <color name="flatGreen">#2ecc71</color>
 </resources>
