@@ -1,6 +1,7 @@
 package fr.nikho.epitech.intra.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -23,6 +24,7 @@ import org.w3c.dom.Text;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import fr.nikho.epitech.intra.R;
@@ -46,6 +48,9 @@ public class ModuleActivity extends AppCompatActivity {
     private TextView titleText, userGradeText, userCreditText, descriptionText, competenceText;
     private TextView beginDateText, endRegisterDateText, endDateText;
     private ConstraintLayout descriptionCL, userGradeCL;
+
+    private TextView activitiesTitleText, pastActivitiesTitleText;
+    private LinearLayout activitiesLinearLayout, pastActivitiesLinearLayout;
 
     private User user;
     private EpitechClient client;
@@ -82,6 +87,11 @@ public class ModuleActivity extends AppCompatActivity {
         userGradeCL = findViewById(R.id.module_usergrade_cl);
         userCreditText = findViewById(R.id.module_user_credits);
 
+        activitiesLinearLayout = findViewById(R.id.module_activities_ll);
+        pastActivitiesLinearLayout = findViewById(R.id.module_past_activities_ll);
+
+        activitiesTitleText = findViewById(R.id.module_project_title1);
+        pastActivitiesTitleText = findViewById(R.id.module_project_title2);
     }
 
     private void onClickDescriptionView(View view) {
@@ -124,6 +134,7 @@ public class ModuleActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(@NonNull Module module) {
+                        Calendar now = new DateManager().getNow();
                         titleText.setText(module.getTitle());
 
                         descriptionCL.setOnClickListener(v -> showBottomSheetDialog(module));
@@ -144,7 +155,7 @@ public class ModuleActivity extends AppCompatActivity {
                         Calendar endRegisteration = new DateManager().getDateFromModuleData(module.getEndRegister());
                         Calendar end = new DateManager().getDateFromModuleData(module.getEnd());
 
-                        Calendar now = new DateManager().getNow();
+
 
                         if (now.compareTo(begin) > 0)
                             beginDateText.setBackgroundColor(getColor(R.color.flatDarkGray));
@@ -158,8 +169,34 @@ public class ModuleActivity extends AppCompatActivity {
                             endDateText.setBackgroundColor(getColor(R.color.flatDarkGray));
                         else
                             endDateText.setBackgroundColor(getColor(R.color.flatGreen));
-                        /*LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+                        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
 
+
+                        int pastActivityCount = 0;
+                        int currentActivityCount = 0;
+                        for (Module.Activity activity : module.getActivites()) {
+                            Calendar endCalendar = new DateManager().getDateFromModuleActivityData(activity.getEnd());
+
+                            if (now.compareTo(endCalendar) > 0) {
+                                pastActivityCount++;
+                                pastActivitiesLinearLayout.addView(getActivityItemView(inflater, activitiesLinearLayout, activity));
+                            } else {
+                                currentActivityCount++;
+                                activitiesLinearLayout.addView(getActivityItemView(inflater, activitiesLinearLayout, activity));
+                            }
+                        }
+
+                        if (pastActivityCount == 0) {
+                            pastActivitiesTitleText.setVisibility(View.INVISIBLE);
+                            pastActivitiesTitleText.setPadding(0, 0, 0, 0);
+                        }
+                        if (currentActivityCount == 0) {
+                            activitiesTitleText.setVisibility(View.INVISIBLE);
+                            activitiesTitleText.setPadding(0, 0, 0, 0);
+                        }
+
+
+                        /*
                         String authUrl = ClientService.getLoginLink(getApplicationContext());
                         authUrl = authUrl.substring(0, authUrl.length() - 1);
 
@@ -183,6 +220,38 @@ public class ModuleActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private ConstraintLayout getActivityItemView(LayoutInflater inflater, ViewGroup parent, Module.Activity activity) {
+        String[][] iconAndType = {
+                {"proj", R.drawable.ic_project + "", "" + R.color.projectCard},
+                {"rdv", R.drawable.ic_appointment + "", "" + R.color.appointmentCard},
+                {"tp", R.drawable.ic_workshop + "", "" + R.color.workshopCard},
+                {"class", R.drawable.ic_bootstrap + "", "" + R.color.bootstrapCard}};
+
+        ConstraintLayout cl = (ConstraintLayout) inflater.inflate(R.layout.item_module_activity, parent, false);
+
+        ImageView icon = cl.findViewById(R.id.item_module_type_icon);
+        TextView title = cl.findViewById(R.id.item_module_title);
+        ConstraintLayout card = cl.findViewById(R.id.item_module_cl);
+        LinearLayout layoutCard = cl.findViewById(R.id.item_module_type_ll);
+
+        title.setText(activity.getTitle());
+        for (String[] strings : iconAndType) {
+            if (strings[0].equalsIgnoreCase(activity.getTypeCode())) {
+                icon.setBackground(AppCompatResources.getDrawable(this, Integer.parseInt(strings[1])));
+                layoutCard.setBackgroundColor(getColor(Integer.parseInt(strings[2])));
+            }
+        }
+
+        card.setOnClickListener(v -> onClickOnActivity(v, activity));
+        return cl;
+    }
+
+    private void onClickOnActivity(View view, Module.Activity activity) {
+        Log.e("CLICKED", "CL");
+        Intent intent = new Intent(this, ModuleActivityActivity.class);
+        startActivity(intent);
     }
 
     private ConstraintLayout getUserItemView(LayoutInflater inflater, ViewGroup parent, Module.Manager managers, String authUrl) {

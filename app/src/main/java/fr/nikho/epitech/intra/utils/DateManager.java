@@ -83,6 +83,35 @@ public class DateManager {
     }
 
     /**
+     *
+     * @param data a String which contains: "2021-04-18 01:00:00",
+     * @return
+     */
+    public Calendar getDateFromModuleActivityData(String data) {
+        Calendar calendar = Calendar.getInstance();
+        if (data.isEmpty())
+            return null;
+        try {
+            String[] date = data.split(" ");
+            String[] dateFormat = date[0].split("-");
+            String[] hoursFormat = date[1].split(":");
+            int year = Integer.parseInt(dateFormat[0]);
+            int months = Integer.parseInt(dateFormat[1])-1;
+            int day = Integer.parseInt(dateFormat[2]);
+
+            int hours = Integer.parseInt(hoursFormat[0]);
+            int minutes = Integer.parseInt(hoursFormat[1]);
+            int seconds = Integer.parseInt(hoursFormat[2]);
+
+            calendar.set(year, months, day, hours, minutes, seconds);
+        } catch (Exception ex) {
+            ex.getStackTrace();
+            return null;
+        }
+        return calendar;
+    }
+
+    /**
      * Get Calendar from now
      * @return Calendar
      */

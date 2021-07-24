@@ -16,4 +16,8 @@
     <color name="backgroundCardview">#F9F9F9</color>
     <color name="flatDarkGray">#716F81</color>
     <color name="flatGreen">#2ecc71</color>
+    <color name="appointmentCard">#ff7675</color>
+    <color name="workshopCard">#a29bfe</color>
+    <color name="bootstrapCard">#f1c40f</color>
+    <color name="projectCard">#9b59b6</color>
 </resources>

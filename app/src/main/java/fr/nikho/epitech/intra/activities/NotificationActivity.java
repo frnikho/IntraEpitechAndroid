@@ -184,6 +184,11 @@ public class NotificationActivity extends AppCompatActivity {
                 // HOURS
                 if ((seconds / 60 / 60) > 24) {
                     //DAYS
+                    if (seconds / 60 / 60 / 24 > 31) {
+
+                    } else {
+                        date.setText((seconds / 60 / 60 / 24) + " d");
+                    }
                 } else {
                     date.setText((seconds / 60 / 60) + " h");
                 }

@@ -4,7 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
@@ -15,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IntraEpitechAndroid">
-        <activity android:name=".activities.QRActivity"></activity>
+        <activity android:name=".activities.ModuleActivityActivity"></activity>
+        <activity android:name=".activities.QRActivity" />
         <activity android:name=".activities.ModuleActivity" />
         <activity android:name=".activities.MarksActivity" />
         <activity android:name=".activities.LanguageSettingsActivity" />
