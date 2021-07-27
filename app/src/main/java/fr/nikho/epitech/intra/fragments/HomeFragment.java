@@ -2,6 +2,7 @@ package fr.nikho.epitech.intra.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -30,6 +31,7 @@ import fr.nikho.epitech.intra.activities.NotificationActivity;
 import fr.nikho.epitech.intra.activities.WelcomeActivity;
 import fr.nikho.epitech.intra.EpitechClient;
 import fr.nikho.epitech.intra.data.Dashboard;
+import fr.nikho.epitech.intra.data.Module;
 import fr.nikho.epitech.intra.data.User;
 import fr.nikho.epitech.intra.dialogs.GpaDialog;
 import fr.nikho.epitech.intra.services.ClientService;
@@ -163,13 +165,14 @@ public class HomeFragment extends Fragment {
                         if (dashboard.getBoard().getActivities().length == 0)
                             activitiesLayout.addView(getBreakTimeAnimation(activitiesLayout, R.raw.levitate_meditate_peace_and_love, "Not activities"));
 
-                        int uc = Arrays.stream(dashboard.getNotes())
+/*                        int uc = Arrays.stream(dashboard.getNotes())
                                 .filter(v -> !v.getGrade().equalsIgnoreCase("Echec"))
                                 .filter(v -> !v.getGrade().equalsIgnoreCase("-"))
                                 .filter(v -> v.getSemesterCode().equalsIgnoreCase("B4"))
-                                .mapToInt(note -> Integer.parseInt(note.getCredits())).sum();
-                        userCredits.setText(String.valueOf(uc));
-                        int cmin = Integer.parseInt(dashboard.getNotes()[0].getCreditsMin());
+                                .mapToInt(note -> Integer.parseInt(note.getCredits())).sum();*/
+                        userCredits.setText(String.valueOf(user.getCredits()));
+
+                        int cmin = Integer.parseInt(dashboard.getNotes()[0].getCreditsObj());
                         userCredits.setTextColor(getResources().getColor(R.color.intra_primary));
                         userGpa.setText(user.getGpa()[0].getGpa());
                         minimumCredits.setText(String.valueOf(cmin));
@@ -232,20 +235,34 @@ public class HomeFragment extends Fragment {
         return textView;
     }
 
-    public LinearLayout getModuleLayout(Dashboard.Board.Module module) {
+    public ConstraintLayout getModuleLayout(Dashboard.Board.Module module) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        LinearLayout row = (LinearLayout) inflater.inflate(R.layout.item_home_activity, activitiesLayout, false);
+        ConstraintLayout row = (ConstraintLayout) inflater.inflate(R.layout.item_home_module, activitiesLayout, false);
         TextView title = row.findViewById(R.id.module_name);
         TextView start = row.findViewById(R.id.module_start_date);
         TextView end = row.findViewById(R.id.module_end_date);
         ProgressBar progress = row.findViewById(R.id.module_progress_bar);
-
-        title.setText(module.getTitle());
-        start.setText(module.getTimelineStart());
-        end.setText(module.getTimelineEnd());
-        progress.setProgress(100);
-
+        if (module.getTitle() != null)
+            title.setText(module.getTitle());
+        if (module.getTimelineStart() != null)
+            start.setText(module.getTimelineStart());
+        if (module.getTimelineEnd() != null)
+            end.setText(module.getTimelineEnd());
+        progress.setProgress(Math.round(Float.parseFloat(module.getTimelineBarre())));
+        row.setOnClickListener(v -> onClickOnModuleCard(v, module));
         return row;
+    }
+
+    private void onClickOnModuleCard(View view, Dashboard.Board.Module module) {
+        Intent intent = new Intent(getContext(), ModuleActivity.class);
+        String[] moduleArray = module.getTitleLink().split("/");
+        if (moduleArray.length < 5) {
+            Toast.makeText(getContext(), "An error occurred", Toast.LENGTH_LONG).show();
+            return;
+        }
+        String[] d = {moduleArray[2], moduleArray[3], moduleArray[4]};
+        intent.putExtra("data", d);
+        startActivity(intent);
     }
 
     public ConstraintLayout getBreakTimeAnimation(ViewGroup parent, int resourceId, String text) {

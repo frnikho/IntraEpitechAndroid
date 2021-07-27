@@ -19,4 +19,6 @@
     <string name="user_medal_suffix">:nb medal(s)</string>
     <string name="user_encouragment_suffix">:nb encouragement(s)</string>
     <string name="you_got_nb_credit_s">You got :nb credit(s) !</string>
+    <string name="module_user_grade_text">Grade :gr</string>
+    <string name="objectif">Objectif</string>
 </resources>

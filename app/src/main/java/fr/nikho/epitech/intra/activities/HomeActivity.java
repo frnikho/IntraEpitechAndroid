@@ -71,6 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         adapter = new HomePageAdapter(fm, getLifecycle());
         viewPager.setAdapter(adapter);
+        viewPager.setUserInputEnabled(false);
 
         bottomAppBar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {

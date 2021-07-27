@@ -98,7 +98,7 @@
                                                 style="@style/HomeBoxTitle"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
-                                                android:text="credits" />
+                                                android:text="@string/objectif" />
                                     </androidx.cardview.widget.CardView>
 
                                     <androidx.cardview.widget.CardView

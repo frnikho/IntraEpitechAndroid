@@ -4,179 +4,406 @@ import com.google.gson.annotations.SerializedName;
 
 public class Activity {
 
-    public class StudentRegistered{
+    public class StudentRegistered {
         @SerializedName("registered")
-        public String registered;
+        private String registered;
+
+        public String getRegistered() {
+            return registered;
+        }
     }
 
     public class Event {
         @SerializedName("code")
-        public String code;
+        private String code;
 
         @SerializedName("num_event")
-        public String numEvent;
+        private String numEvent;
 
         @SerializedName("seats")
-        public String seats;
+        private String seats;
 
         @SerializedName("title")
-        public Object title;
+        private Object title;
 
         @SerializedName("description")
-        public Object description;
+        private Object description;
 
         @SerializedName("nb_inscrits")
-        public String nbInscrits;
+        private String nbInscrits;
 
         @SerializedName("begin")
-        public String begin;
+        private String begin;
 
         @SerializedName("end")
-        public String end;
+        private String end;
 
         @SerializedName("id_activite")
-        public String idActivite;
+        private String idActivite;
 
         @SerializedName("location")
-        public String location;
+        private String location;
 
         @SerializedName("nb_max_students_projet")
-        public Object nbMaxStudentsProjet;
+        private Object nbMaxStudentsProjet;
 
         @SerializedName("already_register")
-        public Object alreadyRegister;
+        private Object alreadyRegister;
 
         @SerializedName("user_status")
-        public Object userStatus;
+        private Object userStatus;
 
         @SerializedName("allow_token")
-        public String allowToken;
+        private String allowToken;
 
         @SerializedName("assistants")
-        public Object[] assistants;
+        private Object[] assistants;
+
+        public String getCode() {
+            return code;
+        }
+
+        public String getNumEvent() {
+            return numEvent;
+        }
+
+        public String getSeats() {
+            return seats;
+        }
+
+        public Object getTitle() {
+            return title;
+        }
+
+        public Object getDescription() {
+            return description;
+        }
+
+        public String getNbInscrits() {
+            return nbInscrits;
+        }
+
+        public String getBegin() {
+            return begin;
+        }
+
+        public String getEnd() {
+            return end;
+        }
+
+        public String getIdActivite() {
+            return idActivite;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public Object getNbMaxStudentsProjet() {
+            return nbMaxStudentsProjet;
+        }
+
+        public Object getAlreadyRegister() {
+            return alreadyRegister;
+        }
+
+        public Object getUserStatus() {
+            return userStatus;
+        }
+
+        public String getAllowToken() {
+            return allowToken;
+        }
+
+        public Object[] getAssistants() {
+            return assistants;
+        }
     }
 
     @SerializedName("scolaryear")
-    public String scolaryear;
+    private String scolaryear;
 
     @SerializedName("codemodule")
-    public String codemodule;
+    private String codemodule;
 
     @SerializedName("codeinstance")
-    public String codeinstance;
+    private String codeinstance;
 
     @SerializedName("codeacti")
-    public String codeacti;
+    private String codeacti;
 
     @SerializedName("call_ihk")
-    public Object callIhk;
+    private Object callIhk;
 
     @SerializedName("slug")
-    public Object slug;
+    private Object slug;
 
     @SerializedName("instance_location")
-    public String instanceLocation;
+    private String instanceLocation;
 
     @SerializedName("module_title")
-    public String moduleTitle;
+    private String moduleTitle;
 
     @SerializedName("title")
-    public String title;
+    private String title;
 
     @SerializedName("description")
-    public String description;
+    private String description;
 
     @SerializedName("type_title")
-    public String typeTitle;
+    private String typeTitle;
 
     @SerializedName("type_code")
-    public String typeCode;
+    private String typeCode;
 
     @SerializedName("begin")
-    public String begin;
+    private String begin;
 
     @SerializedName("start")
-    public String start;
+    private String start;
 
     @SerializedName("end_register")
-    public Object endRegister;
+    private Object endRegister;
 
     @SerializedName("deadline")
-    public Object deadline;
+    private Object deadline;
 
     @SerializedName("end")
-    public String end;
+    private String end;
 
     @SerializedName("nb_hours")
-    public String nbHours;
+    private String nbHours;
 
     @SerializedName("nb_group")
-    public int nbGroup;
+    private int nbGroup;
 
     @SerializedName("num")
-    public int num;
+    private int num;
 
     @SerializedName("register")
-    public String register;
+    private String register;
 
     @SerializedName("register_by_bloc")
-    public String registerByBloc;
+    private String registerByBloc;
 
     @SerializedName("register_prof")
-    public String registerProf;
+    private String registerProf;
 
     @SerializedName("title_location_type")
-    public Object titleLocationType;
+    private Object titleLocationType;
 
     @SerializedName("is_projet")
-    public boolean isProjet;
+    private boolean isProjet;
 
     @SerializedName("id_projet")
-    public Object idProjet;
+    private Object idProjet;
 
     @SerializedName("project_title")
-    public Object projectTitle;
+    private Object projectTitle;
 
     @SerializedName("is_note")
-    public boolean isNote;
+    private boolean isNote;
 
     @SerializedName("nb_notes")
-    public Object nbNotes;
+    private Object nbNotes;
 
     @SerializedName("is_blocins")
-    public boolean isBlocins;
+    private boolean isBlocins;
 
     @SerializedName("rdv_status")
-    public String rdvStatus;
+    private String rdvStatus;
 
     @SerializedName("id_bareme")
-    public Object idBareme;
+    private Object idBareme;
 
     @SerializedName("title_bareme")
-    public Object titleBareme;
+    private Object titleBareme;
 
     @SerializedName("archive")
-    public String archive;
+    private String archive;
 
     @SerializedName("hash_elearning")
-    public Object hashElearning;
+    private Object hashElearning;
 
     @SerializedName("ged_node_adm")
-    public Object gedNodeAdm;
+    private Object gedNodeAdm;
 
     @SerializedName("nb_planified")
-    public int nbPlanified;
+    private int nbPlanified;
 
     @SerializedName("hidden")
-    public boolean hidden;
+    private boolean hidden;
 
     @SerializedName("project")
-    public Object project;
+    private Object project;
 
     @SerializedName("StudentRegistered")
-    public StudentRegistered studentRegistered;
+    private StudentRegistered studentRegistered;
 
     @SerializedName("events")
-    public Event[] events;
+    private Event[] events;
 
+    public String getScolaryear() {
+        return scolaryear;
+    }
+
+    public String getCodemodule() {
+        return codemodule;
+    }
+
+    public String getCodeinstance() {
+        return codeinstance;
+    }
+
+    public String getCodeacti() {
+        return codeacti;
+    }
+
+    public Object getCallIhk() {
+        return callIhk;
+    }
+
+    public Object getSlug() {
+        return slug;
+    }
+
+    public String getInstanceLocation() {
+        return instanceLocation;
+    }
+
+    public String getModuleTitle() {
+        return moduleTitle;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTypeTitle() {
+        return typeTitle;
+    }
+
+    public String getTypeCode() {
+        return typeCode;
+    }
+
+    public String getBegin() {
+        return begin;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public Object getEndRegister() {
+        return endRegister;
+    }
+
+    public Object getDeadline() {
+        return deadline;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public String getNbHours() {
+        return nbHours;
+    }
+
+    public int getNbGroup() {
+        return nbGroup;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public String getRegister() {
+        return register;
+    }
+
+    public String getRegisterByBloc() {
+        return registerByBloc;
+    }
+
+    public String getRegisterProf() {
+        return registerProf;
+    }
+
+    public Object getTitleLocationType() {
+        return titleLocationType;
+    }
+
+    public boolean isProjet() {
+        return isProjet;
+    }
+
+    public Object getIdProjet() {
+        return idProjet;
+    }
+
+    public Object getProjectTitle() {
+        return projectTitle;
+    }
+
+    public boolean isNote() {
+        return isNote;
+    }
+
+    public Object getNbNotes() {
+        return nbNotes;
+    }
+
+    public boolean isBlocins() {
+        return isBlocins;
+    }
+
+    public String getRdvStatus() {
+        return rdvStatus;
+    }
+
+    public Object getIdBareme() {
+        return idBareme;
+    }
+
+    public Object getTitleBareme() {
+        return titleBareme;
+    }
+
+    public String getArchive() {
+        return archive;
+    }
+
+    public Object getHashElearning() {
+        return hashElearning;
+    }
+
+    public Object getGedNodeAdm() {
+        return gedNodeAdm;
+    }
+
+    public int getNbPlanified() {
+        return nbPlanified;
+    }
+
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    public Object getProject() {
+        return project;
+    }
+
+    public StudentRegistered getStudentRegistered() {
+        return studentRegistered;
+    }
+
+    public Event[] getEvents() {
+        return events;
+    }
 }

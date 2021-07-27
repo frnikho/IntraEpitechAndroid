@@ -6,7 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".activities.ModuleActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/activity_loading_anim"
+        android:elevation="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_rawRes="@raw/loading_animation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true">
+
+    </com.airbnb.lottie.LottieAnimationView>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -217,9 +229,9 @@
 
 
                 <io.github.florent37.shapeofview.shapes.RoundRectView
-                    android:id="@+id/roundRectView"
+                    android:id="@+id/module_description_rrv"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="0dp"
                     android:layout_margin="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -267,7 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_margin="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/roundRectView"
+                    app:layout_constraintTop_toBottomOf="@+id/module_description_rrv"
                     app:shape_roundRect_bottomLeftRadius="25dp"
                     app:shape_roundRect_bottomRightRadius="25dp"
                     app:shape_roundRect_topLeftRadius="25dp"

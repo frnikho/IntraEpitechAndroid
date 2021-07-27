@@ -1,6 +1,7 @@
 package fr.nikho.epitech.intra;
 
 import fr.nikho.epitech.intra.data.Activity;
+import fr.nikho.epitech.intra.data.CalendarActivity;
 import fr.nikho.epitech.intra.data.Dashboard;
 import fr.nikho.epitech.intra.data.Document;
 import fr.nikho.epitech.intra.data.Marks;
@@ -18,6 +19,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.Streaming;
 
 public interface EpitechClient {
@@ -42,7 +44,7 @@ public interface EpitechClient {
 
     @Headers("Accept: application/json")
     @GET("module/{year}/{module}/{instance}/{activity}/?format=json")
-    Call<Activity> getActivity(
+    Observable<Activity> getActivity(
             @Path("year") String year,
             @Path("module") String module,
             @Path("instance") String instance,
@@ -105,6 +107,13 @@ public interface EpitechClient {
     @GET("user/{email}/notification/message?format=json")
     Observable<Notification[]> getNotifications(
             @Path("email") String email
+    );
+
+    @Headers("Accept: application/json")
+    @GET("planning/load?format=json")
+    Observable<CalendarActivity[]> getCalendarActivity(
+            @Query("start") String startDate,
+            @Query("end") String endDate
     );
 
     @Headers("Accept: application/json")

@@ -10,6 +10,7 @@
     <string name="change_default_language">Changer la langue par defaut</string>
     <string name="disconnect">Déconnexion</string>
     <string name="see_marks">Voir les notes</string>
+    <string name="mark_semester">Semestre</string>
     <string name="congratulations">Felicitations !</string>
     <string name="scolar_year">:nb année</string>
     <string name="user_ghost_suffix">:nb absence(s)</string>
@@ -17,4 +18,6 @@
     <string name="user_medal_suffix">:nb medal(s)</string>
     <string name="user_encouragment_suffix">:nb encouragement(s)</string>
     <string name="you_got_nb_credit_s">Vous avez eu :nb credit(s) !</string>
+    <string name="module_user_grade_text">Grade :gr</string>
+    <string name="objectif">Objectif</string>
 </resources>

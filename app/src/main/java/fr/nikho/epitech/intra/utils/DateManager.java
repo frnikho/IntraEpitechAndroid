@@ -122,4 +122,33 @@ public class DateManager {
         return calendar;
     }
 
+    public Date getFirstDayOfWeek() {
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        return date.getTime();
+    }
+
+    public Date getFirstDayOfWeek(int year, int month, int day) {
+        Calendar date = Calendar.getInstance();
+        date.set(year, month, day);
+        date.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        return date.getTime();
+    }
+
+    public Date getLastDayOfWeek() {
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        date.add(Calendar.DATE, 6);
+        return date.getTime();
+    }
+
+    public Date getLastDayOfWeek(int year, int month, int day) {
+        Calendar date = Calendar.getInstance();
+        date.set(year, month, day);
+        date.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        date.add(Calendar.DATE, 6);
+        return date.getTime();
+    }
+
+
 }

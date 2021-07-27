@@ -16,6 +16,8 @@ import fr.nikho.epitech.intra.fragments.UserFragment;
 
 public class HomePageAdapter extends FragmentStateAdapter {
 
+    private boolean isPagingEnabled = true;
+
     public HomePageAdapter(@NonNull @NotNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
